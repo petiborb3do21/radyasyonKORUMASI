@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uzay Radyasyon Laboratuvarı</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<header><h1>☢ Uzay Radyasyon Laboratuvarı<small>Astronotlar uzayda radyasyondan nasıl korunur?</small></h1>
+<div class="row"><b class="m" id="day">GÜN 0.0</b><button id="pz" title="Duraklat / devam">⏸</button><button id="spd" title="Simülasyon hızı">Hız ×1</button><button id="rs" title="Baştan başla">↺ Sıfırla</button><button id="hb" title="Yardım">? Yardım</button></div></header>
+<div id="al">☀ GÜNEŞ FIRTINASI! Astronotlar sığınağa yönlendiriliyor.</div>
+<main>
+<aside>
+<div class="card"><h2><b>1</b>Nerede?</h2><select id="env" title="Görev ortamı"></select><div class="hint" id="envh"></div></div>
+<div class="card"><h2><b>2</b>Zırh seç</h2><select id="mat" title="Gövde malzemesi"></select>
+<div class="sp" style="margin-top:10px"><span>Kalınlık</span><b id="tv" class="m"></b></div><input type="range" id="th" min="0" max="150" value="30" title="Kalınlık (g/cm²)">
+<div class="hint" id="note"></div></div>
+<div class="card"><h2><b>3</b>Olay &amp; sığınak</h2>
+<button class="hot" id="spe">☀ Güneş fırtınası başlat</button>
+<label class="t"><span>Otomatik sığınak<small>Fırtınada astronotlar kendiliğinden sığınağa geçer</small></span><input type="checkbox" id="aut" checked></label>
+<button id="sh" style="width:100%">🛡 Astronotları sığınağa al</button>
+<details><summary>Gelişmiş: aktif kalkanlar</summary>
+<label class="t"><span>Manyetik kalkan<small>Protonları saptırır</small></span><input type="checkbox" id="mag"></label>
+<label class="t"><span>Elektrostatik kalkan<small>Pozitifleri iter, elektronları çeker</small></span><input type="checkbox" id="est"></label></details></div>
+</aside>
+<section id="mid"><div class="card"><div id="stage"><canvas id="sim"></canvas>
+<div id="stbox"><div id="st">GÜVENLİ</div><div id="msg"></div><div id="tip"></div></div></div>
+<div class="pres"><button class="pre" data-p="iss">🛰 ISS’te rutin</button><button class="pre" data-p="moon">🌙 Ay üssü</button><button class="pre" data-p="mars">🚀 Mars yolu</button><button class="pre" data-p="storm">☀ Fırtına testi</button><button id="vol">⚛ Örnek parçacık</button></div>
+<div class="leg"><b style="color:#e879f9">● Mor</b> ağır iyon (zor durur) · <b style="color:#fbbf24">● Sarı</b> proton · <b style="color:#38bdf8">● Mavi</b> elektron · <b style="color:#ef4444">● Kırmızı</b> zırhın ürettiği ikincil ışın</div>
+<details><summary>📈 Grafikler</summary><div class="row"><button data-m="time" class="on">Doz zaman çizgisi</button><button data-m="mat">Zırh karşılaştırması</button></div><canvas id="ch"></canvas></details></div></section>
+<aside>
+<div class="card"><h2>Mürettebat</h2><div id="crw"></div><div class="hint">Çubuk, kariyer sınırına (600 mSv) ne kadar yaklaşıldığını gösterir.</div></div>
+<div class="card"><h2>Ayrıntılar</h2>
+<details open><summary>Doz dağılımı</summary><div class="m" style="font-size:22px;font-weight:700" id="rate">0.00 <small style="font-size:12px;color:var(--mu)">mSv/gün</small></div><div class="bar" id="stk"></div><div id="spc"></div></details>
+<details><summary>Sayaçlar &amp; olay günlüğü</summary><div class="sp"><span>Saptırılan</span><b id="s1">0</b></div><div class="sp"><span>Zırhta durdurulan</span><b id="s2">0</b></div><div class="sp"><span>İkincil üretilen</span><b id="s3">0</b></div><div class="sp"><span>Astronota isabet</span><b id="s4">0</b></div><div class="lg" id="lg"></div></details></div>
+</aside></main>
+<dialog id="help"><h2 style="font-size:16px">Nasıl kullanılır?</h2><ol><li><b>Nerede?</b> — Görev ortamını seç (ISS, Ay, Mars…).</li><li><b>Zırh seç</b> — Malzemeyi ve kalınlığı değiştir. Polietilen ve su en iyisidir.</li><li><b>Olay</b> — Güneş fırtınası başlat, astronotların sığınağa kaçışını izle.</li></ol><p class="hint">Ekranın sol üstündeki kutu durumu sade bir dille özetler. Hazır senaryo düğmeleri tek tıkla başlatır.</p><button class="hot" onclick="help.close()">Başla</button></dialog>
+<script src="js/data.js"></script><script src="js/physics.js"></script><script src="js/render.js"></script><script src="js/ui.js"></script><script src="js/main.js"></script>
+</body></html>
